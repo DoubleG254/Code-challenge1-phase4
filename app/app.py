@@ -52,10 +52,10 @@ def get_pizzas():
 # Route to create a new RestaurantPizza
 @app.route('/restaurant_pizzas', methods=['POST'])
 def create_restaurant_pizza():
-    
-    price = request.form.get('price')
-    pizza_id = request.form.get('pizza_id')
-    restaurant_id = request.form.get('restaurant_id')
+    data = request.get_json()
+    price = data.get('price')
+    pizza_id = data.get('pizza_id')
+    restaurant_id = data.get('restaurant_id')
 
     # Validate price
     if not (1 <= price <= 30):
